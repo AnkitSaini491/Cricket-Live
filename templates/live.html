@@ -1,1 +1,162 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Live Cricket Score</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+    <div class="logo">
+
+        🏏 Cricket Live
+
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/live" class="active">Live</a></li>
+
+        <li><a href="/about">About</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- Live Header -->
+
+<section class="live-header">
+
+    <h1>🔴 Live Cricket Matches</h1>
+
+    <p>Scores update automatically every 30 seconds.</p>
+
+</section>
+
+<!-- Match Cards -->
+
+<section class="live-container">
+
+{% if matches %}
+
+{% for match in matches %}
+
+<div class="match-card">
+
+<div class="live-tag">
+
+LIVE
+
+</div>
+
+<h2>{{ match.name }}</h2>
+
+<p><strong>Status:</strong> {{ match.status }}</p>
+
+<p><strong>Match:</strong> {{ match.matchType }}</p>
+
+<p><strong>Venue:</strong> {{ match.venue }}</p>
+
+{% if match.score %}
+
+{% for inning in match.score %}
+
+<div class="score-box">
+
+<h3>{{ inning.inning }}</h3>
+
+<p>
+
+{{ inning.r }}/{{ inning.w }}
+
+({{ inning.o }} Overs)
+
+</p>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+  {% endif %}
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="no-match">
+
+    <h2>😔 No Live Matches Available</h2>
+
+    <p>Please check again later.</p>
+
+</div>
+
+{% endif %}
+
+</section>
+
+<!-- Action Buttons -->
+
+<section class="buttons">
+
+    <a href="/" class="btn">
+
+        🏠 Home
+
+    </a>
+
+    <button onclick="location.reload()" class="btn">
+
+        🔄 Refresh
+
+    </button>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+    <p>
+
+        © 2026 Cricket Live |
+        Live Scores Powered by Cricket API
+
+    </p>
+
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<script>
+
+// Auto Refresh Every 30 Seconds
+
+setTimeout(function(){
+
+    location.reload();
+
+},30000);
+
+</script>
+
+</body>
+</html>
