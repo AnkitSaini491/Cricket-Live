@@ -1,1 +1,97 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cricket Live</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Animated Background -->
+
+<div class="bg-animation"></div>
+
+<!-- Navbar -->
+
+<nav>
+
+    <div class="logo">
+
+        🏏 Cricket Live
+
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/live">Live Score</a></li>
+
+        <li><a href="/about">About</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- Hero -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <span class="live-badge">
+
+            🔴 LIVE
+
+        </span>
+
+        <h1>
+
+            Live Cricket Scores
+
+            <br>
+
+            Anytime Anywhere
+
+        </h1>
+
+        <p>
+
+            Stay updated with live scores,
+
+            match details,
+
+            upcoming fixtures,
+
+            and real-time cricket action.
+
+        </p>
+
+        <a href="/live" class="btn">
+
+            Watch Live
+
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Cricket">
+
+    </div>
+
+</section>
