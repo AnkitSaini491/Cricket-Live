@@ -1,1 +1,477 @@
 
+/* ==========================
+   Google Font
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================
+   Reset
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0b1120;
+    color:#ffffff;
+    overflow-x:hidden;
+}
+
+/* ==========================
+   Animated Background
+========================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00bfff30;
+    border-radius:50%;
+    top:-150px;
+    left:-150px;
+    filter:blur(140px);
+    z-index:-2;
+    animation:float1 8s infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#ff006620;
+    border-radius:50%;
+    bottom:-150px;
+    right:-150px;
+    filter:blur(150px);
+    z-index:-2;
+    animation:float2 10s infinite alternate;
+}
+
+@keyframes float1{
+    from{transform:translateY(0);}
+    to{transform:translateY(80px);}
+}
+
+@keyframes float2{
+    from{transform:translateX(0);}
+    to{transform:translateX(-80px);}
+}
+
+/* ==========================
+   Navbar
+========================== */
+
+nav{
+    width:100%;
+    height:75px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 8%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999;
+    background:rgba(12,18,35,.75);
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#00d4ff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-size:17px;
+    transition:.3s;
+}
+
+nav ul li a:hover,
+.active{
+    color:#00d4ff;
+}
+
+/* ==========================
+   Hero
+========================== */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:120px 8%;
+}
+
+.hero-text{
+    width:50%;
+}
+
+.hero-text h1{
+    font-size:60px;
+    line-height:1.2;
+    margin:20px 0;
+}
+
+.hero-text p{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.hero-image{
+    width:40%;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:320px;
+    animation:floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
+  /* ==========================
+   LIVE Badge
+========================== */
+
+.live-badge{
+    display:inline-block;
+    padding:10px 20px;
+    background:#ff2d55;
+    color:#fff;
+    border-radius:50px;
+    font-weight:600;
+    animation:blink 1s infinite;
+    box-shadow:0 0 20px rgba(255,45,85,.5);
+}
+
+@keyframes blink{
+    0%,100%{
+        opacity:1;
+    }
+    50%{
+        opacity:.4;
+    }
+}
+
+/* ==========================
+   Buttons
+========================== */
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 35px;
+    background:linear-gradient(45deg,#00d4ff,#2563eb);
+    color:#fff;
+    text-decoration:none;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:600;
+    transition:.35s;
+    box-shadow:0 10px 30px rgba(37,99,235,.4);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(37,99,235,.6);
+}
+
+/* ==========================
+   Features
+========================== */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    padding:80px 8%;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:30px;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(0,212,255,.25);
+}
+
+.card h2{
+    color:#00d4ff;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* ==========================
+   Live Match Cards
+========================== */
+
+.live-container{
+    padding:120px 8% 60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.match-card{
+    position:relative;
+    background:rgba(255,255,255,.06);
+    border-radius:20px;
+    padding:25px;
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.35s;
+}
+
+.match-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,212,255,.25);
+}
+
+.live-tag{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:#ff2d55;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    animation:blink 1s infinite;
+}
+
+.match-card h2{
+    margin-bottom:15px;
+    color:#00d4ff;
+}
+
+.match-card p{
+    margin:8px 0;
+    color:#dbeafe;
+}
+
+.score-box{
+    margin-top:18px;
+    padding:15px;
+    border-radius:12px;
+    background:#172554;
+
+  
+}
+}
+/* ==========================
+   About Page
+========================== */
+
+.about{
+    padding:120px 8% 60px;
+    text-align:center;
+}
+
+.about h1{
+    font-size:48px;
+    color:#00d4ff;
+    margin-bottom:20px;
+}
+
+.about p{
+    max-width:800px;
+    margin:auto;
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.about-box{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.developer{
+    margin-top:50px;
+    padding:25px;
+    background:rgba(255,255,255,.05);
+    border-radius:20px;
+}
+
+/* ==========================
+   Footer
+========================== */
+
+footer{
+    text-align:center;
+    padding:25px;
+    margin-top:60px;
+    color:#cbd5e1;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ==========================
+   Scrollbar
+========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b1120;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00d4ff;
+    border-radius:20px;
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media(max-width:992px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-text,
+.hero-image{
+    width:100%;
+}
+
+.hero-text h1{
+    font-size:42px;
+}
+
+.hero-image img{
+    width:240px;
+    margin-top:40px;
+}
+
+nav{
+    padding:0 20px;
+}
+
+.live-container{
+    grid-template-columns:1fr;
+}
+
+.features{
+    grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+    height:auto;
+    padding:15px;
+}
+
+nav ul{
+    margin-top:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+nav ul li{
+    margin:10px;
+}
+
+.hero{
+    padding:140px 25px 60px;
+}
+
+.hero-text h1{
+    font-size:34px;
+}
+
+.hero-text p{
+    font-size:16px;
+}
+
+.features{
+    grid-template-columns:1fr;
+}
+
+.about h1{
+    font-size:34px;
+}
+
+.match-card{
+    padding:20px;
+}
+
+.btn{
+    width:100%;
+    text-align:center;
+}
+
+}
+
+/* ==========================
+   Fade Animation
+========================== */
+
+.hero,
+.card,
+.match-card,
+.about,
+footer{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
