@@ -3,64 +3,87 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# Load .env file
 load_dotenv()
 
 app = Flask(__name__)
 
+# API Key
 API_KEY = os.getenv("CRICKET_API_KEY")
 
+# CricAPI Endpoint
 BASE_URL = "https://api.cricapi.com/v1/currentMatches"
 
 
+# ==========================
+# Home
+# ==========================
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
+# ==========================
+# Live Matches
+# ==========================
 @app.route("/live")
 def live():
 
-    url = f"{BASE_URL}?apikey={API_KEY}&offset=0"
+    matches = []
 
     try:
-        response = requests.get(url, timeout=10)
-        data = response.json()
 
-        matches = data.get("data", [])
+        url = f"{BASE_URL}?apikey={API_KEY}&offset=0"
 
-    except Exception:
-        matches = []
+        response = requests.get(url, timeout=15)
 
-    return render_template(
-        "live.html",
-        matches=matches
-    )
+        print("Status Code:", response.status_code)
+        print("Response:", response.text)
+
+        if response.status_code == 200:
+
+            data = response.json()
+
+            if data.get("status") == "success":
+                matches = data.get("data", [])
+
+    except Exception as e:
+
+        print("ERROR:", e)
+
+    return render_template("live.html", matches=matches)
 
 
+# ==========================
+# About
+# ==========================
 @app.route("/about")
 def about():
     return render_template("about.html")
-    # ==========================
-# Error Handlers
-# ==========================
 
+
+# ==========================
+# Error Pages
+# ==========================
 @app.errorhandler(404)
-def page_not_found(error):
+def not_found(error):
     return render_template("about.html"), 404
 
 
 @app.errorhandler(500)
-def internal_error(error):
+def server_error(error):
     return render_template("about.html"), 500
 
 
 # ==========================
-# Run App
+# Run Server
 # ==========================
-
 if __name__ == "__main__":
+
+    print("API KEY =", API_KEY)
+
     app.run(
         host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
+        port=5000,
         debug=True
     )
